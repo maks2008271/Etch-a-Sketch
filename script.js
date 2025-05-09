@@ -1,15 +1,32 @@
 const container = document.querySelector(".container");
+const square = document.querySelector(".square");
 
 let gridWidth = 16; // by default width of grid is 16 x 16
 let gridPerimeter = gridWidth ** 2
 
 const squareSize = 20;
 
+function getRandomColor() {
+    return Math.floor(Math.random() * 255);
+};
+
+console.log(getRandomColor());
+
 function createGrid(gridPerimeter) {
     for (let i = 0; i < gridPerimeter; i++) {
         const square = document.createElement("div");
-        square.style = `border: 1px solid gray; width:${squareSize}px; height:${squareSize}px;`;
-        square.setAttribute("class", "hover")
+        square.setAttribute("class", "square")
+        square.style.opacity = 1;
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+
+        let opacity = 0.1;
+        
+        square.addEventListener("mouseenter", () => {
+            square.style.backgroundColor = `rgba(${getRandomColor()}, ${getRandomColor()}, ${getRandomColor()}, ${opacity})`;
+            opacity += 0.1;
+        })
+
         container.appendChild(square);
     }
 }

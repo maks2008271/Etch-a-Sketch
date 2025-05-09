@@ -16,6 +16,6 @@ body {
     flex-wrap: wrap;
 }
 
-.hover:hover {
-    background-color: blue;
+.square {
+    border: 1px solid gray;
 }
